@@ -1,5 +1,4 @@
 {
-    "host": "241233041224105985",
     "channels": ["air-lock", "hallway", "storage-room", "cafeteria", "control-room", "escape-pod"],
     "shells": [
         {

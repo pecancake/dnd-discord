@@ -120,6 +120,9 @@ const config = JSON.parse(fs.readFileSync('config/config.json'));
 // tokens
 const tokens = JSON.parse(fs.readFileSync('tokens.json'));
 
+// secret
+const secret = JSON.parse(fs.readFileSync('secret.json'));
+
 // setup shells
 var shellKeys = JSON.parse(fs.readFileSync("shells.json"));
 var shells = [];
@@ -132,7 +135,7 @@ for (var i=0; i!=shellKeys.length; i++) {
 // API define
 class API {
     static async getGuild() {
-        return await host.guilds.fetch("763879065445859339");
+        return await host.guilds.fetch(secret.guildId);
     }
 
     static async init() {
@@ -332,7 +335,7 @@ class API {
     }
 
     static async shellSendMessage(shellIndex, channelName, text) {
-        var channels = (await shells[shellIndex].guilds.fetch("763879065445859339")).channels.cache.filter(chan => chan.type == "text" && config['channels'].includes(chan.name));
+        var channels = (await shells[shellIndex].guilds.fetch(secret.guildId)).channels.cache.filter(chan => chan.type == "text" && config['channels'].includes(chan.name));
 
         var channel = channels.find(chan => chan.name == channelName);
 
@@ -349,7 +352,7 @@ class API {
 // test controller
 host.on('message', async(message) => {
     if (message.content == "init") {
-        if (message.author.id == "241233041224105985") {
+        if (message.author.id == secret.hostId) {
             await API.init();
         }
     }
@@ -366,7 +369,7 @@ var membersCache = [];
 
 // ready statement
 host.on('ready', async () => {
-    membersCache = (await (await API.getGuild()).members.fetch()).filter(m => m.id != "763879317460615188");    // get all members except for bot
+    membersCache = (await (await API.getGuild()).members.fetch()).filter(m => m.id != host.user.id);    // get all members except for bot
     console.log("Ready!");
     
     // http
@@ -419,7 +422,7 @@ host.on('debug', (info) => {
 });
 
 // login
-host.login('NzYzODc5MzE3NDYwNjE1MTg4.X3-IDQ.QCkZqGj340IAEwffBHwkLPTuYPY');
+host.login(secret.APIKey);
 
 
 /*
