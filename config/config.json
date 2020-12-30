@@ -1,0 +1,18 @@
+{
+    "host": "241233041224105985",
+    "channels": ["air-lock", "hallway", "storage-room", "cafeteria", "control-room", "escape-pod"],
+    "shells": [
+        {
+            "nick": "F.L.O.O.F.",
+            "pfp": "floofBot.png"
+        },
+        {
+            "nick": "Alien",
+            "pfp": "alien.jpg"
+        },
+        {
+            "nick": "Alien King",
+            "pfp": "alienKing.png"
+        }
+    ]
+}

@@ -1,0 +1,49 @@
+div
+{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    vertical-align: middle;
+    /*border: 1px solid black;*/
+    width:100%;
+    padding:2px;
+    box-sizing: border-box;
+}
+
+body
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.bord
+{
+    border:solid black 1px;
+}
+
+button
+{
+    outline: none;
+    text-align: center;
+}
+
+.row
+{
+    flex-direction: row;
+}
+
+.col
+{
+    flex-direction: column;
+}
+
+html *
+{
+    font-family: Fira Code
+}
+
+#tokenValue{
+    font-size: x-large;
+    border: none;
+    outline: none;
+}
